@@ -1,6 +1,6 @@
 #Superstore Project
 
-#Schema:
+##Schema:
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
@@ -28,25 +28,25 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-#Query:
-#In this project, I used SQL to query the superstore database about the store's item and price data.
+##Query:
+##In this project, I used SQL to query the superstore database about the store's item and price data.
 
-#Write a SQL query that orders the items by price.
+###Write a SQL query that orders the items by price.
 SELECT item_name, price
 FROM superstore
 ORDER BY price desc;
 
-#Write a SQL query that will show a statistic about the item prices.
+###Write a SQL query that will show a statistic about the item prices.
 SELECT MAX(price)
 FROM superstore;
 
-#Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
+###Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 SELECT SUM(price), category
 FROM superstore
 WHERE category='Kitchen Supplies'
 GROUP BY 'Kitchen Supplies';
 
-#Come up with a question about the data and answer it using SQL. 
+###Come up with a question about the data and answer it using SQL. 
 
 --How many wireless earbuds are there in stock?
 SELECT SUM(stock_quantity), item_name
