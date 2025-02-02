@@ -44,7 +44,8 @@ FROM superstore;
 ###Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 SELECT SUM(price), category
 FROM superstore
-WHERE category = 'Kitchen Supplies';
+WHERE category = 'Kitchen Supplies'
+GROUP BY 'Kitchen Supplies';
 
 ###Come up with a question about the data and answer it using SQL. 
 
@@ -52,4 +53,4 @@ WHERE category = 'Kitchen Supplies';
 SELECT SUM(stock_quantity), item_name
 FROM superstore
 WHERE item_name='Wireless Earbuds'
-GROUP BY item_name;
+GROUP BY 'Wireless Earbuds';
