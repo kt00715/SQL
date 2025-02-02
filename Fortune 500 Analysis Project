@@ -58,6 +58,13 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+-- © Copyright 2025 Break Into Tech  --
 
 ##Query:
 
+###Write a SQL query that will show the companies that have an average employee tenure of 5 years or more and offers over 15 paid time off days per year.
+SELECT *
+FROM fortune_companies
+WHERE paid_time_off_days >=15
+AND avg_employee_tenure >=5
+ORDER BY company_id asc;
