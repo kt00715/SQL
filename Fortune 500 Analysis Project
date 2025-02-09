@@ -60,8 +60,10 @@ VALUES
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 -- © Copyright 2025 Break Into Tech  --
 
-##Query:
-###Write a SQL query that will show the companies that have an average employee tenure of 5 years or more and offers over 15 paid time off days per year.
+In this project, I used the data to create new and interesting queries related to the fortune_companies database.
+##Queries:
+
+##Create a SQL query that will show the companies that have an average employee tenure of 5 years or more and offers over 15 paid time off days per year.
 
 SELECT *
 FROM fortune_companies
@@ -72,8 +74,7 @@ ORDER BY company_id asc;
 ##Conclusion: There are several companies in this database that offer over 15 PTO days per year that also have an average employee tenure of over 5 years. In addition,
 the companies included in these results have a wide range of employees on staff, and represent multiple different industries.
 
-##Query:
-###Write a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
+##Create a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
 
 SELECT company_name
 FROM fortune_companies
@@ -84,10 +85,13 @@ AND maternity_leave_weeks > 8;
 ##Conclusion: There are 7 technology companies in this database that offer both healthcare benefits and a maternity leave tenure of greater than 2 months. 
 The most notable companies on this list are Apple Inc. and Amazon.com Inc.
 
-##Query:
-###Write a SQL query to determine which industry makes over $1 trillion in annual total revenue.
+##Create a SQL query to determine which industry makes over $1 trillion in annual total revenue.
 
 SELECT industry, ROUND(SUM(revenue)) AS annual_total_revenue
 FROM fortune_companies
 GROUP BY industry
-HAVING annual_total_revenue > 1000;
+HAVING annual_total_revenue > 1000
+ORDER BY annual_total_revenue desc;
+
+##Conclusion: Technology and Manufacturing are the two most profitable industries, while Finance and Healthcare are the two industries that bring in the 
+lowest profits.
