@@ -68,3 +68,18 @@ FROM fortune_companies
 WHERE paid_time_off_days >=15
 AND avg_employee_tenure >=5
 ORDER BY company_id asc;
+
+##Conclusion: There are several companies in this database that offer over 15 PTO days per year that also have an average employee tenure of over 5 years. In addition,
+the companies included in these results have a wide range of employees on staff, and represent multiple different industries.
+
+##Query:
+
+###Write a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
+SELECT company_name
+FROM fortune_companies
+WHERE industry = "Technology"
+AND healthcare_benefits != 0
+AND maternity_leave_weeks > 8;
+
+##Conclusion: There are 7 technology companies in this database that offer both healthcare benefits and a maternity leave tenure of greater than 2 months. 
+The most notable companies on this list are Apple Inc. and Amazon.com Inc.
