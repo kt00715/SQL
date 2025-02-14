@@ -71,8 +71,8 @@ WHERE paid_time_off_days >=15
 AND avg_employee_tenure >=5
 ORDER BY company_id asc;
 
-##Conclusion: There are several companies in this database that offer over 15 PTO days per year that also have an average employee tenure of over 5 years. In addition,
-the companies included in these results have a wide range of employees on staff, and represent multiple different industries.
+##Conclusion: There are several companies that offer over 15 PTO days per year that also have an average employee tenure of over 5 years. The companies 
+included in the final result have a wide range of employees on staff, and represent multiple different industries.
 
 ##Create a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
 
@@ -82,8 +82,8 @@ WHERE industry = "Technology"
 AND healthcare_benefits != 0
 AND maternity_leave_weeks > 8;
 
-##Conclusion: There are 7 technology companies in this database that offer both healthcare benefits and a maternity leave tenure of greater than 2 months. 
-The most notable companies on this list are Apple Inc. and Amazon.com Inc.
+##Conclusion: There are 7 technology companies that offer both healthcare benefits and a maternity leave tenure of more than 2 months. The most notable companies 
+on this list are Apple Inc. and Amazon.com Inc.
 
 ##Create a SQL query to determine which industry makes over $1 trillion in annual total revenue.
 
@@ -95,3 +95,19 @@ ORDER BY annual_total_revenue desc;
 
 ##Conclusion: Technology and Manufacturing are the two most profitable industries, while Finance and Healthcare are the two industries that bring in the 
 lowest profits.
+
+##Create a SQL query that will show you how many companies have a standard maternity leave of 0-5 weeks, 5-10 weeks, 10-15 weeks, and 15+ weeks.
+
+SELECT COUNT (*) AS number_of_companies,
+CASE WHEN maternity_leave_weeks >=15 THEN "More than 15 weeks"
+WHEN maternity_leave_weeks >=10 THEN "More than 10 weeks"
+WHEN maternity_leave_weeks >=5 THEN "More than 5 weeks"
+ELSE "Less than 5 weeks"
+END AS standard_maternity_weeks
+FROM fortune_companies
+GROUP BY standard_maternity_weeks
+HAVING number_of_companies >=0
+ORDER BY number_of_companies desc;
+
+##Conclusion: Most companies fall in betweeen the greater than 5 weeks, less than 15 weeks category when it comes to what they offer for maternity leave. Very
+few companies will give their employees more than 15 weeks off. There are no companies that will give their employees less than 5 weeks of maternity leave.
