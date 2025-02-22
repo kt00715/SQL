@@ -63,7 +63,7 @@ VALUES
 In this project, I used the data to create new and interesting queries related to the fortune_companies database.
 ##Queries:
 
-##Create a SQL query that will show the companies that have an average employee tenure of 5 years or more and offers over 15 paid time off days per year.
+##1. Create a SQL query that will show the companies that have an average employee tenure of 5 years or more and offers over 15 paid time off days per year.
 
 SELECT *
 FROM fortune_companies
@@ -74,7 +74,7 @@ ORDER BY company_id asc;
 ##Conclusion: There are several companies that offer over 15 PTO days per year that also have an average employee tenure of over 5 years. The companies 
 included in the final result have a wide range of employees on staff, and represent multiple different industries.
 
-##Create a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
+##2. Create a SQL query where you show the technology companies that offer healthcare benefits and more than 2 months in time off for maternity leave.
 
 SELECT company_name
 FROM fortune_companies
@@ -85,7 +85,7 @@ AND maternity_leave_weeks > 8;
 ##Conclusion: There are 7 technology companies that offer both healthcare benefits and a maternity leave tenure of more than 2 months. The most notable companies 
 on this list are Apple Inc. and Amazon.com Inc.
 
-##Create a SQL query to determine which industry makes over $1 trillion in annual total revenue.
+##3. Create a SQL query to determine which industry makes over $1 trillion in annual total revenue.
 
 SELECT industry, ROUND(SUM(revenue)) AS annual_total_revenue
 FROM fortune_companies
@@ -96,7 +96,7 @@ ORDER BY annual_total_revenue desc;
 ##Conclusion: Technology and Manufacturing are the two most profitable industries, while Finance and Healthcare are the two industries that bring in the 
 lowest profits.
 
-##Create a SQL query that will show you how many companies have a standard maternity leave of 0-5 weeks, 5-10 weeks, 10-15 weeks, and 15+ weeks.
+##4. Create a SQL query that will show you how many companies have a standard maternity leave of 0-5 weeks, 5-10 weeks, 10-15 weeks, and 15+ weeks.
 
 SELECT COUNT (*) AS number_of_companies,
 CASE WHEN maternity_leave_weeks >=15 THEN "More than 15 weeks"
