@@ -1,4 +1,4 @@
-# Netflix Database Analysis Project
+#Netflix Database Analysis Project
 
 #Schema:
 CREATE TABLE netflix_titles_info
