@@ -32,25 +32,25 @@ VALUES
 ##In this project, I used SQL to query the superstore database about the store's item and price data.
 ##Queries:
 
-##Write a SQL query that orders the items by price.
+##1. Write a SQL query that orders the items by price.
 
 SELECT item_name, price
 FROM superstore
 ORDER BY price desc;
 
-##Write a SQL query that will show a statistic about the item prices.
+##2. Write a SQL query that will show a statistic about the item prices.
 
 SELECT MAX(price)
 FROM superstore;
 
-##Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
+##3. Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 
 SELECT SUM(price), category
 FROM superstore
 WHERE category = 'Kitchen Supplies'
 GROUP BY 'Kitchen Supplies';
 
-##Come up with a question about the data and answer it using SQL. 
+##4. Come up with a question about the data and answer it using SQL. 
 ###How many wireless earbuds are there in stock?
 
 SELECT SUM(stock_quantity), item_name
