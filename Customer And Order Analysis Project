@@ -137,3 +137,16 @@ AND orderID <> 'Order ID';
 515 Lincoln St, New York City, NY 10001: 3
 916 Pine St, New York City, NY 10001: 3
 961 Jefferson St, New York City, NY 10001: 4
+
+##10. How many of each type of headphone were sold in February?
+
+SELECT Product, SUM(Quantity) AS Sum
+FROM FebSales
+WHERE Product LIKE '%Headphones'
+GROUP BY Product;
+
+##Conclusion: 
+
+Apple Airpods Headphones: 1,013
+Bose SoundSport Headphones: 844
+Wired Headphones: 1,282
