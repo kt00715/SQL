@@ -120,3 +120,20 @@ USB-C Charging Cable: 271
 Vareebadd Phone: 25
 Wired Headphones: 191
 iPhone: 71
+
+##9. Which locations in New York received at least 3 orders in January, and how many orders did they each receive? 
+
+SELECT DISTINCT location, COUNT(Quantity) AS order_amount
+FROM BIT_DB.JanSales
+WHERE location LIKE '%NY%'
+GROUP BY location
+HAVING order_amount >=3
+AND length(orderID) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion: 
+
+148 Elm St, New York City, NY 10001: 3
+515 Lincoln St, New York City, NY 10001: 3
+916 Pine St, New York City, NY 10001: 3
+961 Jefferson St, New York City, NY 10001: 4
