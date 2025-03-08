@@ -1,0 +1,93 @@
+#Customer And Order Analysis Project
+
+In this project, I used SQLiteStudio to answer questions about customer orders based on the monthly sales data available.
+##Queries:
+
+##1. How many many unique orders were placed in January? 
+
+SELECT COUNT(Distinct orderID)
+FROM BIT_DB.JanSales
+WHERE length(orderID) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion: 9,268 unique orders were placed in January.
+
+##2. How many of those orders were for an iPhone?
+
+SELECT COUNT(Distinct orderID)
+FROM BIT_DB.JanSales
+WHERE Product = 'iPhone'
+AND length(orderID) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion: There were 379 unique iPhone orders placed in January.
+
+##3. Select the customer account numbers for all the orders that were placed in February.
+
+SELECT DISTINCT acctnum
+FROM BIT_DB.customers
+JOIN BIT_DB.FebSales
+ON customers.order_id = FebSales.orderID
+WHERE length(order_id) = 6
+AND order_id <> 'Order ID';
+
+##Conclusion: There are 11,986 customer account numbers available for all orders that were placed in February.
+
+##4. Which product was the cheapest one sold in January, and what was the price?
+
+SELECT Distinct Product, price
+FROM BIT_DB.JanSales
+WHERE price = (SELECT MIN(price)
+FROM BIT_DB.JanSales);
+
+##Conclusion: The AAA Batteries (4-pack) was the cheapest product sold in January. It's price is $2.99.
+
+##5. What is the total revenue for each product sold in January?
+
+SELECT Product, SUM(Quantity) *ROUND(price) AS Revenue
+FROM BIT_DB.JanSales
+GROUP BY Product
+ORDER BY Product asc;
+
+##Conclusion:
+
+20in Monitor: $23,650
+27in 4K Gaming Monitor: $121,680
+27in FHD Monitor: $62,850
+34in Ultrawide Monitor: $119,320
+AA Batteries (4-pack): $5,700
+AAA Batteries (4-pack): $4,788
+Apple Airpods Headphones: $122,100
+Bose SoundSport Headphones: $65,900
+Flatscreen TV: $72,900
+Google Phone: $190,800
+LG Dryer: $23,400
+LG Washing Machine: $25,200
+Lightning Charging Cable: $17,265
+Macbook Pro Laptop: $399,500
+ThinkPad Laptop: $217,000
+USB-C Charging Cable: $15,408
+Vareebadd Phone: $50,000
+Wired Headphones: $12,972
+iPhone: $265,300
+
+##6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+
+SELECT Product, SUM(Quantity), SUM(Quantity) * price AS revenue
+FROM BIT_DB.FebSales
+WHERE location = '548 Lincoln St, Seattle, WA 98101'
+GROUP BY Product;
+
+##Conclusion: The AA Batteries (4-pack) was sold at this address in February. The quantity sold was 2 and the revenue made was $7.68.
+
+##7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+
+SELECT COUNT (Distinct customers.acctnum) AS customer_quantity, ROUND(AVG(FebSales.Quantity * FebSales.price),2) AS revenue
+FROM BIT_DB.FebSales
+LEFT JOIN BIT_DB.customers
+ON FebSales.orderID = customers.order_id
+WHERE FebSales.Quantity > 2
+AND length(orderID) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion: 278 customers ordered more than 2 products at a time in February. The average amount spent was $13.83.
