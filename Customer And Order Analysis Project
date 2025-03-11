@@ -150,3 +150,20 @@ GROUP BY Product;
 Apple Airpods Headphones: 1,013
 Bose SoundSport Headphones: 844
 Wired Headphones: 1,282
+
+#11. What was the average amount spent per account in February?
+
+SELECT ROUND(AVG(Quantity * price)) AS average_spent
+FROM BIT_DB.FebSales
+LEFT JOIN BIT_DB.customers
+ON FebSales.orderID = customers.order_id
+WHERE LENGTH(orderID) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion:
+
+The average amount spent per account in February was $190.
+
+##12. What was the average quantity of products purchased per account in February?
+
+
