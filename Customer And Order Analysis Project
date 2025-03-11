@@ -179,6 +179,14 @@ The average quantity of products purchased per account in February was 1.
 
 ##13. Which product brought in the most revenue in January and how much revenue did it bring in total?
 
+SELECT Product, SUM(Quantity*price) AS Revenue
+FROM JanSales
+GROUP BY Product
+ORDER BY Revenue desc
+LIMIT 1;
 
+##Conclusion:
+
+The Macbook Pro Laptop is the product that brought in the most revenue out of all of the products: $399,500.
 
 
