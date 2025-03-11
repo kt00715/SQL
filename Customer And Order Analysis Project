@@ -166,4 +166,19 @@ The average amount spent per account in February was $190.
 
 ##12. What was the average quantity of products purchased per account in February?
 
+SELECT SUM(Quantity)/COUNT(DISTINCT acctnum)
+FROM BIT_DB.FebSales
+LEFT JOIN BIT_DB.customers
+ON FebSales.orderID = customers.order_id
+WHERE LENGTH(orderid) = 6
+AND orderID <> 'Order ID';
+
+##Conclusion:
+
+The average quantity of products purchased per account in February was 1.
+
+##13. Which product brought in the most revenue in January and how much revenue did it bring in total?
+
+
+
 
