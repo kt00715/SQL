@@ -29,7 +29,7 @@ VALUES
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 -- © Copyright 2025 Break Into Tech  --
 
-##In this project, I used SQL to query the superstore database about the store's item and price data.
+In this project, I used SQL to query the superstore database about the store's item and price data.
 ##Queries:
 
 ##1. Write a SQL query that orders the items by price.
