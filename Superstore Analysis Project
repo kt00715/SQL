@@ -38,17 +38,43 @@ SELECT item_name, price
 FROM superstore
 ORDER BY price desc;
 
+##Result:
+
+Smart LED TV: $549.00
+Memory Foam Mattress: $499.99
+Robot Vacuum Cleaner: $199.50
+Ergonomic Office Chair: $189.00
+Air Purifier: $129.50
+Stainless Steel Cookware Set: $89.99
+Cotton Bedding Set: $89.00
+Premium Coffee Maker: $79.99
+Smart Home Security Camera: $79.95
+Wireless Earbuds: $49.99
+Slow Cooker: $49.95
+Wireless Bluetooth Speaker: $39.99
+Cutlery Set: $34.50
+Non-Stick Baking Set: $29.95
+Cozy Throw Blanket: $24.99
+
 ##2. Write a SQL query that will show a statistic about the item prices.
 
 SELECT MAX(price)
 FROM superstore;
 
+##Result:
+
+The maximum price in this item list is $549.
+
 ##3. Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 
-SELECT SUM(price), category
+SELECT SUM(price)AS total_price, category
 FROM superstore
 WHERE category = 'Kitchen Supplies'
 GROUP BY 'Kitchen Supplies';
+
+##Result:
+
+The sum of "Kitchen Supplies" item prices is $234.43.
 
 ##4. Come up with a question about the data and answer it using SQL. 
 ###How many wireless earbuds are there in stock?
@@ -57,3 +83,7 @@ SELECT SUM(stock_quantity), item_name
 FROM superstore
 WHERE item_name='Wireless Earbuds'
 GROUP BY 'Wireless Earbuds';
+
+##Result:
+
+There are currently 75 wireless earbuds in stock.
