@@ -10,7 +10,7 @@ FROM BIT_DB.JanSales
 WHERE length(orderID) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion: 9,268 unique orders were placed in January.
+##Result: 9,268 unique orders were placed in January.
 
 ##2. How many of those orders were for an iPhone?
 
@@ -20,7 +20,7 @@ WHERE Product = 'iPhone'
 AND length(orderID) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion: There were 379 unique iPhone orders placed in January.
+##Result: There were 379 unique iPhone orders placed in January.
 
 ##3. Select the customer account numbers for all the orders that were placed in February.
 
@@ -31,7 +31,7 @@ ON customers.order_id = FebSales.orderID
 WHERE length(order_id) = 6
 AND order_id <> 'Order ID';
 
-##Conclusion: There are 11,986 customer account numbers available for all orders that were placed in February.
+##Result: There are 11,986 customer account numbers available for all orders that were placed in February.
 
 ##4. Which product was the cheapest one sold in January, and what was the price?
 
@@ -40,7 +40,7 @@ FROM BIT_DB.JanSales
 WHERE price = (SELECT MIN(price)
 FROM BIT_DB.JanSales);
 
-##Conclusion: The AAA Batteries (4-pack) was the cheapest product sold in January. It's price is $2.99.
+##Result: The AAA Batteries (4-pack) was the cheapest product sold in January. It's price is $2.99.
 
 ##5. What is the total revenue for each product sold in January?
 
@@ -49,7 +49,7 @@ FROM BIT_DB.JanSales
 GROUP BY Product
 ORDER BY Product asc;
 
-##Conclusion:
+##Result:
 
 20in Monitor: $23,650
 27in 4K Gaming Monitor: $121,680
@@ -78,7 +78,7 @@ FROM BIT_DB.FebSales
 WHERE location = '548 Lincoln St, Seattle, WA 98101'
 GROUP BY Product;
 
-##Conclusion: The AA Batteries (4-pack) was sold at this address in February. The quantity sold was 2 and the revenue made was $7.68.
+##Result: The AA Batteries (4-pack) was sold at this address in February. The quantity sold was 2 and the revenue made was $7.68.
 
 ##7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
@@ -90,7 +90,7 @@ WHERE FebSales.Quantity > 2
 AND length(orderID) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion: 278 customers ordered more than 2 products at a time in February. The average amount spent was $13.83.
+##Result: 278 customers ordered more than 2 products at a time in February. The average amount spent was $13.83.
 
 ##8. List all the products sold in Los Angeles in February, and include how many of each were sold.
 
@@ -99,7 +99,7 @@ FROM BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product;
 
-##Conclusion: 
+##Result: 
 
 20in Monitor: 44
 27in 4K Gaming Monitor: 70
@@ -131,7 +131,7 @@ HAVING order_amount >=3
 AND length(orderID) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion: 
+##Result: 
 
 148 Elm St, New York City, NY 10001: 3
 515 Lincoln St, New York City, NY 10001: 3
@@ -145,7 +145,7 @@ FROM FebSales
 WHERE Product LIKE '%Headphones'
 GROUP BY Product;
 
-##Conclusion: 
+##Result: 
 
 Apple Airpods Headphones: 1,013
 Bose SoundSport Headphones: 844
@@ -160,7 +160,7 @@ ON FebSales.orderID = customers.order_id
 WHERE LENGTH(orderID) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion:
+##Result:
 
 The average amount spent per account in February was $190.
 
@@ -173,7 +173,7 @@ ON FebSales.orderID = customers.order_id
 WHERE LENGTH(orderid) = 6
 AND orderID <> 'Order ID';
 
-##Conclusion:
+##Result:
 
 The average quantity of products purchased per account in February was 1.
 
@@ -185,8 +185,6 @@ GROUP BY Product
 ORDER BY Revenue desc
 LIMIT 1;
 
-##Conclusion:
+##Result:
 
 The Macbook Pro Laptop is the product that brought in the most revenue out of all of the products: $399,500.
-
-
