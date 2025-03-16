@@ -1,5 +1,29 @@
 #Customer And Order Analysis Project
 
+#Schema:
+CREATE TABLE JanSales (
+    orderID   VARCHAR (8),
+    Product   VARCHAR (80),
+    Quantity  INTEGER (3),
+    price     DOUBLE (7, 2),
+    orderdate DATETIME,
+    location  VARCHAR (120) 
+);
+
+CREATE TABLE FebSales (
+    orderID   VARCHAR (8),
+    Product   VARCHAR (80),
+    Quantity  INTEGER (3),
+    price     DOUBLE (7, 2),
+    orderdate DATETIME,
+    location  VARCHAR (120) 
+);
+
+CREATE TABLE customers (
+    order_id VARCHAR (8),
+    acctnum  VARCHAR (10) 
+);
+
 In this project, I used SQLiteStudio to answer questions about customer orders based on the monthly sales data available.
 ##Queries:
 
