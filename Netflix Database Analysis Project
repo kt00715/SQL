@@ -96,7 +96,7 @@ LEFT JOIN "netflix_people"
 ON netflix_titles_info.show_id = netflix_people.show_id
 WHERE title = 'The Starling';
 
-Result: Theodore Melfi is the director of The Starling.
+##Result: Theodore Melfi is the director of The Starling.
 
 ##5. What is the oldest movie in the database and what year was it made?
 
@@ -106,4 +106,4 @@ WHERE release_year = (SELECT MIN(release_year)
 FROM "netflix_titles_info")
 AND type = 'Movie';
 
-Result: The oldest movie in the database is Sankofa - it was made in 1993.
+##Result: The oldest movie in the database is Sankofa - it was made in 1993.
