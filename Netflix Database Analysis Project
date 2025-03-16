@@ -69,14 +69,14 @@ SELECT COUNT (*) AS movie_count
 FROM "netflix_titles_info"
 WHERE type = 'Movie';
 
-##Conclusion: There are 8 movie titles in this database.
+##Result: There are 8 movie titles in this database.
 
 ##2. When was the most recent batch of tv shows and/or movies added to the database?
 
 SELECT DATE(MAX(date_added))
 FROM "netflix_titles_info";
 
-##Conclusion: The most recent batch of tv shows and/or movies were added to the database on 09-25-2021.
+##Result: The most recent batch of tv shows and/or movies were added to the database on 09-25-2021.
 
 ##3. List all the movies and tv shows in alphabetical order.
 
@@ -84,7 +84,7 @@ SELECT title
 FROM "netflix_titles_info"
 ORDER BY title asc;
 
-##Conclusion: Bangkok Breaking, Blood & Water, Confessions of an Invisible Girl, Crime Stories: India Detectives, Dear White People, Dick Johnson Is Dead,
+##Result: Bangkok Breaking, Blood & Water, Confessions of an Invisible Girl, Crime Stories: India Detectives, Dear White People, Dick Johnson Is Dead,
 Europe's Most Dangerous Man: Otto Skorzeny in Spain, Falsa identidad, Ganglands, Intrusion, Jaguar, Jailbirds New Orleans, Je Suis Karl, Kota Factory, 
 Midnight Mass, My Little Pony: A New Generation, Sankofa, The Great British Baking Show, The Starling, Vendetta: Truth Lies and The Mafia
 
@@ -96,7 +96,7 @@ LEFT JOIN "netflix_people"
 ON netflix_titles_info.show_id = netflix_people.show_id
 WHERE title = 'The Starling';
 
-Conclusion: Theodore Melfi is the director of The Starling.
+Result: Theodore Melfi is the director of The Starling.
 
 ##5. What is the oldest movie in the database and what year was it made?
 
@@ -106,4 +106,4 @@ WHERE release_year = (SELECT MIN(release_year)
 FROM "netflix_titles_info")
 AND type = 'Movie';
 
-Conclusion: The oldest movie in the database is Sankofa - it was made in 1993.
+Result: The oldest movie in the database is Sankofa - it was made in 1993.
