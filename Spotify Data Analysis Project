@@ -22,7 +22,7 @@ CREATE TABLE Spotifydata (
     time_signature   INTEGER        NOT NULL
 );
 
-In this project, I inserted Spotify data into the above table and came up with some questions I thought would be useful for business data collection.
+In this project, I inserted Spotify data into the above table, came up with some questions I thought would be useful for business data collection, and answered them.
 ##Queries:
 
 ##1. Who are the top 5 most popular artists?
