@@ -132,7 +132,7 @@
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 )"
 
-In this project, I used a data set named chinook to make my own queries and answer a set of questions about the store's artists, albums, tracks, invoices, and customers.
+In this project, I used a data set named chinook to make my own queries and then answer a set of questions about the store's artists, albums, tracks, invoices, employees, and customers.
 
 My Queries:
 
@@ -168,4 +168,185 @@ ORDER BY Customer_Count desc;
 
 ##Result: Most customers live in the USA.
 
-Questions:
+Additional Questions:
+
+##1. Name each artist along with the name of their album(s).
+
+SELECT artists.Name, albums.Title
+FROM chinook.artists
+
+LEFT JOIN chinook.albums
+ON artists.ArtistId = albums.ArtistId;
+
+##Result: 418 artistists & their album are listed
+
+##2. What is the most popular genre in the entire tracks list?
+
+SELECT COUNT(tracks.GenreId) AS genre_count, genres.Name
+FROM chinook.tracks
+
+LEFT JOIN chinook.genres
+ON tracks.GenreId = genres.GenreId
+
+GROUP BY genres.Name
+ORDER BY genre_count desc;
+
+##Result: Rock is the most popular genre in the tracks list.
+
+##3. What country do most customers live in?
+
+SELECT COUNT(customers.CustomerId) AS Customer_Count, customers.Country
+FROM chinook.customers
+GROUP BY customers.Country
+ORDER BY Customer_Count desc;
+
+##Result: Most customers live in the USA.
+
+##4. Show the Employees who are Sales Agents.
+
+SELECT EmployeeId, FirstName, LastName, Title
+FROM employees
+WHERE Title like '%Sales % Agent%';
+
+##Result: There are 3 employees who are Sales Agents.
+
+##5. Find a unique/distinct list of billing countries from the Invoice table.
+
+SELECT DISTINCT BillingCountry
+FROM invoices;
+
+##Result: The list of distinct billing countries includes 24 countries.
+
+##6. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+
+SELECT invoices.InvoiceId, invoices.InvoiceDate, invoices.BillingCountry, invoices.Total, employees.FirstName, employees.LastName
+FROM invoices
+
+JOIN customers
+ON invoices.CustomerId = customers.CustomerId
+
+LEFT JOIN employees
+ON SupportRepId = EmployeeId
+
+WHERE employees.Title like '%Sales % Agent%'
+ORDER BY employees.LastName desc;
+
+##Result: All of the 412 invoices list the first and last name of the Sales Agent associated with the invoice
+
+##7. Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+
+SELECT customers.FirstName, customers.LastName, customers.Country, invoices.Total, invoices.InvoiceId, employees.FirstName, employees.LastName
+FROM invoices
+
+JOIN customers
+ON invoices.CustomerId = customers.CustomerId
+
+LEFT JOIN employees
+ON SupportRepId = EmployeeId
+
+WHERE employees.Title like '%Sales % Agent%'
+ORDER BY employees.LastName desc;
+
+##Result: The customer name and country; invoice total and id; sales agent name is listed for all of the invoices and customers.
+
+##8. How many Invoices were there in 2009?
+
+SELECT COUNT (InvoiceId) AS Invoice_Count
+FROM invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+##Result: There were 83 invoices in 2009.
+
+##9. What are the total sales for 2009?
+
+SELECT SUM(Total) AS Total_Sales
+FROM invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+##Result: Total sales for 2009 were $449.46.
+
+##10. Write a query that includes the purchased track name with each invoice line ID.
+
+SELECT invoice_items.InvoiceLineId, tracks.Name
+FROM invoice_items
+
+JOIN tracks
+ON invoice_items.TrackId = tracks.TrackId
+
+ORDER BY InvoiceLineId asc;
+
+##Result: Each Invoice Line ID has a purchased track name associated with it.
+
+##11. Write a query that includes the purchased track name AND artist name with each invoice line ID.
+
+SELECT invoice_items.InvoiceLineId, tracks.Name, artists.Name
+FROM invoice_items
+
+JOIN tracks
+ON invoice_items.TrackId = tracks.TrackId
+
+JOIN albums
+ON tracks.AlbumId = albums.AlbumId
+
+JOIN artists
+ON artists.ArtistId = albums.ArtistId
+
+ORDER BY InvoiceLineId asc;
+
+##Result: Each Invoice Line ID has a purchased track name and artist name associated with it.
+
+##12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+
+SELECT tracks.Name, albums.Title, media_types.Name AS media_name, genres.Name AS genre_name
+FROM tracks
+
+LEFT JOIN albums
+ON tracks.AlbumId = albums.AlbumId
+
+LEFT JOIN media_types
+ON tracks.MediaTypeId = media_types.MediaTypeId
+
+LEFT JOIN genres
+ON tracks.GenreId = genres.GenreId;
+
+##Result: Each track now displays its corresponding album, media type, and genre.
+
+##13. Show the total sales made by each sales agent.
+
+SELECT SUM(invoices.Total) AS Agent_Total, employees.FirstName, employees.LastName
+FROM invoices
+
+LEFT JOIN customers
+ON invoices.CustomerId = customers.CustomerId
+
+LEFT JOIN employees
+ON customers.SupportRepId = employees.EmployeeId
+
+WHERE employees.Title LIKE '%Sales%Agent%'
+GROUP BY employees.EmployeeId
+
+ORDER BY employees.LastName asc;
+
+##Result:
+Steve Johnson - $720.16
+Margaret Park - $775.40
+Jane Peacock - $833.04
+
+##14. Which sales agent made the most dollars in sales in 2009?
+
+SELECT SUM(invoices.Total) AS Agent_Total, employees.FirstName, employees.LastName
+FROM invoices
+
+LEFT JOIN customers
+ON invoices.CustomerId = customers.CustomerId
+
+LEFT JOIN employees
+ON customers.SupportRepId = employees.EmployeeId
+
+WHERE employees.Title LIKE '%Sales%Agent%'
+AND invoices.InvoiceDate LIKE '%2009%'
+
+GROUP BY employees.EmployeeId
+ORDER BY employees.LastName asc;
+
+##Result: Steve Johnson made the most sales in 2009 - $164.34.
