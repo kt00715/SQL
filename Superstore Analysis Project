@@ -39,7 +39,6 @@ FROM superstore
 ORDER BY price desc;
 
 ##Result:
-
 Smart LED TV: $549.00
 Memory Foam Mattress: $499.99
 Robot Vacuum Cleaner: $199.50
@@ -61,9 +60,7 @@ Cozy Throw Blanket: $24.99
 SELECT MAX(price)
 FROM superstore;
 
-##Result:
-
-The maximum price in this item list is $549.
+##Result: The maximum price in this item list is $549.
 
 ##3. Write a SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 
@@ -72,9 +69,7 @@ FROM superstore
 WHERE category = 'Kitchen Supplies'
 GROUP BY 'Kitchen Supplies';
 
-##Result:
-
-The sum of "Kitchen Supplies" item prices is $234.43.
+##Result: The sum of "Kitchen Supplies" item prices is $234.43.
 
 ##4. Come up with a question about the data and answer it using SQL. 
 ###How many wireless earbuds are there in stock?
@@ -84,6 +79,4 @@ FROM superstore
 WHERE item_name='Wireless Earbuds'
 GROUP BY 'Wireless Earbuds';
 
-##Result:
-
-There are currently 75 wireless earbuds in stock.
+##Result: There are currently 75 wireless earbuds in stock.
